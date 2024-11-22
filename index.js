@@ -1,7 +1,7 @@
 import { clear, linearGradient, drawPlayer} from "basicElements";
 import { drawEnemies, canPlayerMove, moveEnemies } from "enemy";
 import { updateMovement } from "playerMovement";
-import {playerRadius} from "./elements/constants";
+import {playerRadius} from "constants";
 
 const canvas = document.getElementById('main');
 const ctx = canvas.getContext('2d');
