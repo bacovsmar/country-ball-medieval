@@ -23,7 +23,7 @@ function easyFunction(time) {
 }
 
 function setOrUnsetMovement(key, isSet) {
-    const setInit = (isSet, movementKey) => {
+    const setInit = (isSet) => {
         return {active: isSet, period: 0, velocity: 0};
     };
 
