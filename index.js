@@ -1,17 +1,25 @@
-import { clear, linearGradient, drawCircle } from "basicElements";
+import { clear, linearGradient, drawPlayer} from "basicElements";
+import { drawEnemies, canPlayerMove, moveEnemies } from "enemy";
 import { updateMovement } from "playerMovement";
+import {playerRadius} from "./elements/constants";
 
 const canvas = document.getElementById('main');
 const ctx = canvas.getContext('2d');
 
-let x = 0;
-let y = 0;
+let player = {x: playerRadius, y: playerRadius};
 
 const subscription = setInterval(() => {
     clear(canvas, ctx);
     linearGradient(canvas, ctx);
-    [x, y] = updateMovement({x, y}, true);
-    drawCircle(ctx, x, y);
+    drawPlayer(ctx, player.x, player.y);
+    let x, y;
+    [x, y] = updateMovement({x: player.x, y: player.y}, true);
+    if (canPlayerMove(x, y)) {
+        player.x = x;
+        player.y = y;
+    }
+    moveEnemies(player);
+    drawEnemies(ctx);
 }, 25);
 
 ctx.fillStyle = 'gray';

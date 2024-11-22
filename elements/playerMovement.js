@@ -1,5 +1,5 @@
-const playerMaxVelocity = 4;
-var lastTimeMeasure = Date.now();
+import {canvasHeight, canvasWidth, playerMaxVelocity, playerRadius} from 'constants';
+let lastTimeMeasure = Date.now();
 
 let movement = {
     up: {active: false, velocity: 0, period: 0},
@@ -77,5 +77,9 @@ export function updateMovement(pos) {
     pos.y +=
         (movement.up.active) ? - movement.up.velocity : 0
         + (movement.down.active) ? movement.down.velocity : 0;
+
+    pos.x = Math.min(canvasWidth - playerRadius, Math.max(playerRadius, pos.x));
+    pos.y = Math.min(canvasHeight - playerRadius, Math.max(playerRadius, pos.y));
+
     return [pos.x, pos.y];
 }
