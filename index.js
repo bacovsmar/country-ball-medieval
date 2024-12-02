@@ -40,7 +40,7 @@ ctx.lineTo(canvas.width, 0);
 ctx.lineWidth = 40;
 ctx.strokeStyle = "orange";
 ctx.stroke();
-ctx.strokeStyle = 'black';
+ctx.strokeStyle = '#000';
 ctx.lineWidth = oldLineWidth;
 
 
